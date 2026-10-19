@@ -1,0 +1,118 @@
+# Known places AI developer tools keep model-provider credentials.
+#
+# kind:      "config" (tool config file), "shell" (shell startup file; anything in it
+#            is exported to every process you launch)
+# provider:  the tool's default provider, used when a key's variable name has no hint
+# env_ref:   how this file format references an environment variable. When set,
+#            `keysweep fix` replaces the literal key with this (%s = variable name).
+# Paths may start with ~ and may contain glob wildcards.
+
+[[tool]]
+name = "Claude Code"
+paths = ["~/.claude.json", "~/.claude/settings.json", "~/.claude/settings.local.json", "~/.claude/.credentials.json"]
+provider = "anthropic"
+
+[[tool]]
+name = "Claude Desktop"
+paths = ["~/Library/Application Support/Claude/claude_desktop_config.json", "~/.config/Claude/claude_desktop_config.json"]
+
+[[tool]]
+name = "OpenCode"
+paths = ["~/.config/opencode/opencode.json", "~/.config/opencode/opencode.jsonc", "~/.config/opencode/config.json"]
+env_ref = "{env:%s}"
+
+# `opencode auth login` store; no env-var syntax, OpenCode reads provider env vars directly.
+[[tool]]
+name = "OpenCode auth store"
+paths = ["~/.local/share/opencode/auth.json"]
+
+[[tool]]
+name = "Codex CLI"
+paths = ["~/.codex/auth.json", "~/.codex/config.toml", "~/.codex/.env"]
+provider = "openai"
+
+[[tool]]
+name = "Gemini CLI"
+paths = ["~/.gemini/settings.json", "~/.gemini/.env"]
+provider = "google"
+
+[[tool]]
+name = "Aider"
+paths = ["~/.aider.conf.yml", "~/.aider.conf.yaml", "~/.env"]
+
+[[tool]]
+name = "Continue"
+paths = ["~/.continue/config.json", "~/.continue/config.yaml", "~/.continue/.env"]
+
+[[tool]]
+name = "Cursor MCP"
+paths = ["~/.cursor/mcp.json"]
+env_ref = "${env:%s}"
+
+[[tool]]
+name = "Cursor"
+paths = ["~/Library/Application Support/Cursor/User/settings.json", "~/.config/Cursor/User/settings.json"]
+
+[[tool]]
+name = "Windsurf"
+paths = ["~/.codeium/windsurf/mcp_config.json", "~/Library/Application Support/Windsurf/User/settings.json"]
+
+[[tool]]
+name = "VS Code"
+paths = [
+  "~/Library/Application Support/Code/User/settings.json",
+  "~/Library/Application Support/Code/User/mcp.json",
+  "~/.config/Code/User/settings.json",
+  "~/.config/Code/User/mcp.json",
+]
+
+[[tool]]
+name = "Cline"
+paths = [
+  "~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json",
+  "~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json",
+]
+
+[[tool]]
+name = "Roo Code"
+paths = ["~/Library/Application Support/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/*.json"]
+
+[[tool]]
+name = "Zed"
+paths = ["~/.config/zed/settings.json"]
+
+[[tool]]
+name = "Goose"
+paths = ["~/.config/goose/config.yaml", "~/.config/goose/secrets.yaml"]
+
+[[tool]]
+name = "Amp"
+paths = ["~/.config/amp/settings.json"]
+
+[[tool]]
+name = "llm (Simon Willison)"
+paths = ["~/Library/Application Support/io.datasette.llm/keys.json", "~/.config/io.datasette.llm/keys.json"]
+
+[[tool]]
+name = "GitHub Copilot"
+paths = ["~/.config/github-copilot/apps.json", "~/.config/github-copilot/hosts.json"]
+provider = "github"
+
+[[tool]]
+name = "Hugging Face"
+paths = ["~/.cache/huggingface/token", "~/.huggingface/token"]
+provider = "huggingface"
+
+[[tool]]
+name = "Ollama / LM Studio / misc"
+paths = ["~/.config/openai/*", "~/.openai/*", "~/.anthropic/*"]
+
+[[tool]]
+name = "Shell profile"
+kind = "shell"
+paths = [
+  "~/.zshrc", "~/.zshenv", "~/.zprofile", "~/.zlogin",
+  "~/.bashrc", "~/.bash_profile", "~/.profile",
+  "~/.config/fish/config.fish", "~/.config/fish/conf.d/*.fish",
+  "~/.oh-my-zsh/custom/*.zsh",
+]
